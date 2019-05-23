@@ -1,0 +1,39 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.column-titles {
+    display: flex;
+}
+.title {
+    padding-right: 15px;
+}
+.filter-add-website-row {
+    display: flex;
+}
+.filter-website-button {
+    display: flex;
+    position: relative;
+    align-items: center;
+    border-bottom: #eaeaea solid 1px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.add-button {
+    position: absolute;
+    right: 0px;
+    background-color: #5a56f7;
+    height: 40px;
+    width: 125px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+}
+.column-placement {
+    display: flex;
+    padding-bottom: 3px;
+    padding-top: 15px;
+    font-size: 12px;
+}
