@@ -5,15 +5,14 @@ import Menu from './Menu';
 import './Menu.css';
 import Dashboard from '../components/Dashboard';
 
-
+// <Dashboard />
 class BaseLayout extends Component {
 
-    
+
     render() {
         return(
             <div>
                 <Menu />
-                <Dashboard />
                 {this.props.children}
             </div>
         )
@@ -21,4 +20,3 @@ class BaseLayout extends Component {
 }
 
 export default BaseLayout;
-

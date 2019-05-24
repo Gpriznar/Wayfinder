@@ -7,8 +7,24 @@
 .column-titles {
     display: flex;
 }
-.title {
+/* .title {
     padding-right: 15px;
+} */
+.performance {
+    display: flex;
+    padding-left: 340px;
+}
+.seo {
+    display: flex;
+    padding-left: 100px;
+}
+.accessibilty {
+    display: flex;
+    padding-left: 100px;
+}
+.best-practices {
+    display: flex;
+    padding-left: 70px;
 }
 .filter-add-website-row {
     display: flex;
@@ -19,7 +35,7 @@
     align-items: center;
     border-bottom: #eaeaea solid 1px;
     padding-top: 15px;
-    padding-bottom: 15px;
+    padding-bottom: 25px;
 }
 .add-button {
     position: absolute;
@@ -36,4 +52,23 @@
     padding-bottom: 3px;
     padding-top: 15px;
     font-size: 12px;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+.filter-button {
+    display: flex;
+    height: 30px;
+    width: 125px;
+    border-radius: 30px;
+}
+
+.a-z {
+    height: 30px;
+    width: 75px;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-left: 10px;
+    background-color: lightgrey;
 }
