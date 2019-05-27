@@ -1,0 +1,24 @@
+/* .MobileStatbar {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    box-shadow: 0px 1px 3px #e2dfdf;
+    text-align: center;
+}
+.stat-quandrant {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+.desktop-mobile {
+    display: flex;
+}
+.stats {
+    display: flex;
+    flex-direction: column;
+} */
+
+/* .tablet-flex {
+    display: flex;
+    flex-wrap: wrap;
+} */

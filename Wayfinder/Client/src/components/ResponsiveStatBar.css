@@ -1,0 +1,150 @@
+.stat-bar {
+    display: flex;
+    margin-bottom: 25px;
+    box-shadow: 0px 1px 3px #e2dfdf;
+    font-size: 14px;
+    color: black;
+    width: 100%;
+}
+.MobileStatbar {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    box-shadow: 0px 1px 3px #e2dfdf;
+    text-align: center;
+    margin: 15px;
+}
+.stat-display {
+    display: flex;
+    font-size: 11px;
+    color: grey;
+    margin: 0px;
+    align-items: center;
+    width: 100%;
+}
+.all-stat-bars {
+    display: flex;
+    flex-direction: column;
+}
+.stat-bar-margin {
+    justify-content: center;
+    margin: auto;
+}
+.last-report {
+    font-size: 11px;
+    font-style: italic; 
+    font-weight: 300;  
+}
+.site-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    width: 325px;
+}
+.last-report {
+    margin-top: 0px;
+}
+.site-url {
+    margin-bottom: 3px;
+}
+
+.desktop-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+}
+.mobile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+}
+.stat-style {
+    margin: 0px;
+}
+.column-style {
+    display: flex;
+    border-right: solid #ccc6c6 1px;
+    height: max-content;
+    width: max-content;
+    width: 100%;
+    justify-content: center;
+}
+.last-column-style {
+    display: flex;
+    height: max-content;
+}
+.desktop-mobile {
+    display: flex;
+    height: max-content;
+    width: max-content;
+    justify-content: center;
+}
+.stat-quandant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    color: grey;
+    width: 200px;
+    height: 70px;
+}
+.top-left-stat-quandant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    color: grey;
+    width: 200px;
+    height: 70px;
+    border-right: solid #ccc6c6 1px;
+}
+.bottom-left-stat-quandant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    color: grey;
+    width: 200px;
+    height: 70px;
+    border-right: solid #ccc6c6 1px;
+    justify-content: center;
+}
+.bottom-right-stat-quandant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 11px;
+    color: grey;
+    width: 200px;
+    height: 70px;
+    justify-content: center;
+}
+.top-stat-row {
+    display: flex;
+    border-bottom: solid #ccc6c6 1px;
+    justify-content: center;
+    width: 350px;
+}
+.stat-row {
+    display: flex;
+    justify-content: center;
+    width: 350px;
+}
+.all-four-stats {
+    padding: 20px;
+}
+.stat-name {
+    margin: 0;
+    font-weight: bold;
+}
+.stats {
+    padding: 10px;
+}
+.tablet-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
