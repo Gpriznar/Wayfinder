@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
 import './AddWebsite.css';
 import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-
-const ADD_WEBSITE = gql`
-mutation createWebsite($name: String!, $url: String!){
-  createWebsite(name: $name, url: $url) {
-    name,
-    url
-  }
-}
-`;
+import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
+import { ADD_WEBSITE } from '../Utils/mutations';
 
 class AddWebsite extends Component {
   constructor() {
@@ -27,11 +20,6 @@ class AddWebsite extends Component {
     });
   }
 
-  handleSubmitClick = () => {
-    console.log(this.state.name);
-    console.log(this.state.url);
-  }
-
   render() {
     return (
       <div className="WebsiteContainerBox">
@@ -40,16 +28,19 @@ class AddWebsite extends Component {
           <input className="WebsiteInputField" name="name" onChange={this.handleTextBoxChange} placeholder="Website Name" />
           <input className="WebsiteInputField" name="url" onChange={this.handleTextBoxChange} placeholder="URL" />
           <div className="SubmitBox">
-            <p> Cancel </p>
+            <NavLink to='/dashboard'><button className="cancel-button">Cancel</button></NavLink>
             <Mutation mutation={ADD_WEBSITE} variables={this.state}>
               {(createWebsite, { data, loading, error }) => {
                 if (loading) return <p>loading...</p>;
                 if (error) return <p>error...</p>;
                 if (data) {
                   return (
-                    <div>
+                    <div className='divcheck'>
                       <button type="button" className="AddButton" onClick={createWebsite}>Submit</button>
-                      <p>{data.createWebsite.name} was added.</p>
+                      <p>
+                        {data.createWebsite.name}
+                        was added.
+                      </p>
                     </div>
                   );
                 }

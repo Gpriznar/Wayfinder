@@ -1,60 +1,56 @@
-const { ApolloServer } = require('apollo-server-express');
-// const cors = require('cors');
+// Imports from node modules
+const { ApolloServer } = require('apollo-server');
+const cors = require('cors');
 const schedule = require('node-schedule');
-const express = require('express');
+require('dotenv').config();
 
-const opts = require('./utils/opts');
-const launchChromeAndRunLighthouse = require('./utils/lighthouseFetch');
+// util(s) to get Lighthouse to run.
+const processWebsites = require('./utils/lighthouse/processWebsites');
+
+// database models from sequelize
 const db = require('./models');
+
+// schema and resolvers for apollo server
 const typeDefs = require('./data/schema');
 const resolvers = require('./data/resolvers');
-const desktopConfig = require('./utils/lr-desktop-config');
-const mobileConfig = require('./utils/lr-mobile-config');
 
-const app = express();
+// Authenticate function
+const authenticate = require('./utils/auth/authenticate');
 
+// // Uncomment following code to create users in DB
+// const seedUsers = require('./utils/auth/seedRegister');
+// seedUsers();
+
+
+// Server defined passing in schema, resovlers, db models,
+// and introspection/playground (only for dev, remove later)
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: { db },
+  context: ({ req }) => {
+    const token = req.headers.authorization || '';
+    return { db, user: authenticate(token) };
+  },
   introspection: true,
   playground: true,
 });
 
-server.applyMiddleware({ app });
 
-async function processWebsites(array) {
- for(const item of array) {
-   const { id, url } = item;
-    await launchChromeAndRunLighthouse(url, opts, desktopConfig, id);
-    await launchChromeAndRunLighthouse(url, opts, mobileConfig, id);
- }
-}
-db.Website.findAll()
-  .then((websites) => {
-    processWebsites(websites);
-  });
-
-const testWebsites = [{ id: 1, url: 'https://www.google.com' }];
-
-const rule = new schedule.RecurrenceRule();
-rule.second = 1;
-
-let count = 0;
-const job = schedule.scheduleJob(rule, async () => {
-  await processWebsites(testWebsites);
-  count += 1;
-  console.log(`minute ${count}`);
+const job = schedule.scheduleJob({ hour: 2, minute: 30, dayOfWeek: 4 }, async () => {
+  db.Website.findAll()
+    .then((websites) => {
+      processWebsites(websites).catch(error => console.log(error));
+    });
+  console.log('LH process was fired, logging websites to db.');
 });
 
-job.schedule(new Date(Date.now() + 5000));
+job.schedule();
+
+// const testWebsites = [{ id: 7, url: 'https://www.hellomonday.com' }];
+// processWebsites(testWebsites).catch(error => console.log(error));
 
 const PORT = process.env.PORT || 8080;
 
-app.get('/', (req, res) => {
-  res.send('hello');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is ready at ${PORT}`);
+server.listen(PORT).then(({ url }) => {
+  console.log(`Server ready at ${url}`);
 });

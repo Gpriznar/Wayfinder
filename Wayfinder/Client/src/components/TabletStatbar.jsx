@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Breakpoint from 'react-socks';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import moment from 'moment';
+import colorCode from '../Utils/ColorCode';
+
 import './MobileStatBar.css';
 import './ResponsiveStatBar.css';
 
@@ -19,6 +22,8 @@ const GET_STATS = gql`
             seo
             time_fetch
             method
+            error_code
+            error_message
         }
     }
 `;
@@ -46,27 +51,63 @@ class TabletStatBar extends Component {
           }
           const reports = methodStats.map((stat) => {
             const { desktop, mobile } = stat[0];
-            return (
+            if (desktop.error_code) {
+              return (
                 <div className="tablet-flex">
-                    <Breakpoint medium only>
-                <div className="MobileStatbar">
+                <Breakpoint medium only>
+                  <div className="MobileStatbar">
+                    <p className="site-url">{desktop.website.url}</p>
+                    <p className="last-report-mobile">
+                      Last Report: {moment(desktop.time_fetch).format('MM/DD/YYYY')}
+                      </p>
+                    <div className="all-four-stats">
+                        <p className="stat-name">ERROR: {desktop.error_code}, {desktop.error_message}</p>
+                    </div>
+                  </div>
+                </Breakpoint>
+                </div>
+              )
+            }
+            if (mobile.error_code) {
+              return (
+                <div className="tablet-flex">
+                <Breakpoint medium only>
+                  <div className="MobileStatbar">
+                    <p className="site-url">{desktop.website.url}</p>
+                    <p className="last-report-mobile">
+                      Last Report: {moment(desktop.time_fetch).format('MM/DD/YYYY')}
+                      </p>
+                    <div className="all-four-stats">
+                        <p className="stat-name">ERROR: {mobile.error_code}, {mobile.error_message}</p>
+                    </div>
+                  </div>
+                </Breakpoint>
+                </div>
+              )
+            }
+            return (
+              <div className="tablet-flex">
+              <Breakpoint medium only>
+                  <div className="MobileStatbar">
                   <p className="site-url">{desktop.website.url}</p>
-                  <p className="last-report">{desktop.time_fetch}</p>
+                  <p className="last-report-mobile">
+                    Last Report: {moment(desktop.time_fetch).format('MM/DD/YYYY')}
+                    </p>
                   <div className="all-four-stats">
                     <div className="top-stat-row">
                       <div className="top-left-stat-quandant">
                         <p className="stat-name">PERFORMANCE</p>
                         <div className="desktop-mobile">
                           <div className="stats">
-                            <p className="stat-style">
-                              {desktop.performance * 100}
+                            <p className={colorCode(desktop.performance)}>
+                              {Math.ceil(desktop.performance * 100)}
                           %
                             </p>
                             <p className="stat-style">Desktop</p>
                           </div>
                           <div className="stats">
-                            <p className="stat-style">
-                              {mobile.performance * 100}
+                            <p className={colorCode(mobile.performance)}>
+                              {Math.ceil(mobile.performance * 100)}
                           %
                             </p>
                             <p className="stat-style">Mobile</p>
@@ -77,15 +118,15 @@ class TabletStatBar extends Component {
                         <p className="stat-name">SEO</p>
                         <div className="desktop-mobile">
                           <div className="stats">
-                            <p className="stat-style">
-                              {desktop.seo * 100}
+                            <p className={colorCode(desktop.seo)}>
+                              {Math.ceil(desktop.seo * 100)}
                           %
                             </p>
                             <p className="stat-style">Desktop</p>
                           </div>
                           <div className="stats">
-                            <p className="stat-style">
-                              {mobile.seo * 100}
+                            <p className={colorCode(mobile.seo)}>
+                              {Math.ceil(mobile.seo * 100)}
                           %
                             </p>
                             <p className="stat-style">Mobile</p>
@@ -98,15 +139,15 @@ class TabletStatBar extends Component {
                         <p className="stat-name">ACCESSIBILITY</p>
                         <div className="desktop-mobile">
                           <div className="stats">
-                            <p className="stat-style">
-                              {desktop.accessibility * 100}
+                            <p className={colorCode(desktop.accessibility)}>
+                              {Math.ceil(desktop.accessibility * 100)}
                           %
                             </p>
                             <p className="stat-style">Desktop</p>
                           </div>
                           <div className="stats">
-                            <p className="stat-style">
-                              {mobile.accessibility * 100}
+                            <p className={colorCode(mobile.accessibility)}>
+                              {Math.ceil(mobile.accessibility * 100)}
                           %
                             </p>
                             <p className="stat-style">Mobile</p>
@@ -117,15 +158,15 @@ class TabletStatBar extends Component {
                         <p className="stat-name">BEST PRACTICES</p>
                         <div className="desktop-mobile">
                           <div className="stats">
-                            <p className="stat-style">
-                              {desktop.best_practices * 100}
+                            <p className={colorCode(desktop.best_practices)}>
+                              {Math.ceil(desktop.best_practices * 100)}
                           %
                             </p>
                             <p className="stat-style">Desktop</p>
                           </div>
                           <div className="stats">
-                            <p className="stat-style">
-                              {mobile.best_practices * 100}
+                            <p className={colorCode(mobile.best_practices)}>
+                              {Math.ceil(mobile.best_practices * 100)}
                           %
                             </p>
                             <p className="stat-style">Mobile</p>
@@ -136,12 +177,13 @@ class TabletStatBar extends Component {
                   </div>
                 </div>
               </Breakpoint>
-                </div>
-              
+              </div>
+
+
             );
           });
           return (
-            <div>
+            <div className="flexing">
               {reports}
             </div>
           );

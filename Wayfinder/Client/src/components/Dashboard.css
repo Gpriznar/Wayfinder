@@ -7,27 +7,27 @@
 .column-titles {
     display: flex;
 }
-/* .title {
-    padding-right: 15px;
-} */
 .performance {
     display: flex;
-    padding-left: 305px;
+    padding-left: 255px;
 }
 .seo {
     display: flex;
-    padding-left: 130px;
+    padding-left: 100px;
 }
 .accessibilty {
     display: flex;
-    padding-left: 130px;
+    padding-left: 95px;
 }
 .best-practices {
     display: flex;
-    padding-left: 80px;
+    padding-left: 65px;
 }
 .filter-add-website-row {
     display: flex;
+    width: 75%;
+    justify-content: center;
+    flex-direction: column;
 }
 .filter-website-button {
     display: flex;
@@ -46,6 +46,7 @@
     border-radius: 20px;
     color: white;
     font-size: 14px;
+    margin-top: 7px;
 }
 .column-placement {
     display: flex;
@@ -60,10 +61,8 @@ a {
 .filter-button {
     display: flex;
     height: 30px;
-    width: 125px;
     border-radius: 30px;
 }
-
 .a-z {
     height: 30px;
     width: 75px;
@@ -71,4 +70,17 @@ a {
     margin-top: 10px;
     margin-left: 10px;
     background-color: lightgrey;
+    font-size: 13px;
+}
+
+.asterisks {
+  font-size: 10px;
+}
+
+.errorDisplay {
+  width: 499px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
 }

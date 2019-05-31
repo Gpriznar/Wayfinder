@@ -1,21 +1,43 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { ApolloConsumer } from 'react-apollo';
+
+
 import './Menu.css';
-// import {connect} from 'react-redux';
-// import {withRouter} from 'react-router-dom';
 
 
 class Menu extends Component {
-    render() {
-        return(
-            <div id="myHeader" className='menu'>
-              <ul className='menu-items'>
-                <li  className='wayfinder'><NavLink to='/dashboard'>Wayfinder</NavLink></li>
-                <li className='logout'><NavLink to='/login'>Logout</NavLink></li>
+  handleSignOutClick = (client) => {
+    localStorage.removeItem('jsonwebtoken');
+    this.props.onSignOut();
+    client.resetStore();
+    this.props.history.push('/');
+  }
+
+  render() {
+    return (
+      <ApolloConsumer>
+        {(apolloClient) => {
+          return (
+            <div id="myHeader" className="menu">
+              <ul className="menu-items">
+                <li className="wayfinder"><NavLink to="/dashboard">Wayfinder</NavLink></li>
+                <li className="logout"><button onClick={() => this.handleSignOutClick(apolloClient)} className="logoutBtn">Logout</button></li>
               </ul>
             </div>
-        )
-    }
+          )
+        }
+      }
+      </ApolloConsumer>
+    )
+  }
 }
 
-export default Menu;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSignOut: () => dispatch({ type: 'SIGN_OUT' }),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Menu);

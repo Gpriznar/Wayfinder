@@ -8,50 +8,90 @@
 
 .LoginInputField {
   text-align: left;
-  margin-left: 25%;
-  margin-right: 25%;
+  height: 20px;
+  width: 170px;
   margin-top: 8px;
   border-radius: 5px;
-  border-style: solid;
-  border-width: thin;
-  padding: 5px;
+  border: solid black 1px;
 }
 
 .LoginButton {
   text-align: center;
-  width: 100px;
+  width: 75px;
   padding: 5px;
   margin-top: 8px;
+  margin-right: 20px;
   border-radius: 20px;
-  border-style: solid;
-  border-width: thin;
+  border: solid 1px;
   background-color: #5D68FE;
   color: white;
   height: 25px;
 }
 
-.LoginTitle {
-  text-align: center;
-  margin-right: 45%;
-  margin-left: 10%;
+.input-half {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-.LoginImageBox {
-  margin-left: 50%;
-  position:absolute;
-
-}
-
-.LoginContainerBox {
-  display: grid;
-}
-
-.LoginImage {
-  max-width: 100%;
-  height: 720px;
+.image-half {
+  display: flex;
 }
 
 .EmailText {
   font-size: 12px;
-  margin-top: 5%;
+}
+.login-screen {
+  display: flex;
+  justify-content: center;
+}
+.large up {
+  display: flex;
+}
+.login-organizer {
+  display: flex;
+  flex-direction: column;
+}
+.submit {
+  display: flex;
+}
+.tablet-login-screen {
+  display: flex;
+}
+.tablet-login-organizer {
+  display: flex;
+}
+.tablet-image-half {
+  display: flex;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  padding-right: 100px;
+}
+.login-button {
+  display: flex;
+}
+.tablet-login-image {
+  display: flex;
+  width: 75%;
+}
+.tablet-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+}
+.all-sizes {
+  display: flex;
+  justify-content: center;
+}
+.desktop-image {
+  display: flex;
+  width: 75%;
+}
+.desktop-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
 }

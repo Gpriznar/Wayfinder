@@ -9,13 +9,12 @@
     color: white;
 }
 .menu-items {
-    position: relative;
     display: flex;
     align-items: center;
     padding: 0px;
     margin: 0px;
-    width: 100%;
-  
+    width: 75%;
+
 }
 li {
     list-style: none;
@@ -23,15 +22,22 @@ li {
 .wayfinder {
     display: flex;
     position: absolute;
-    left: 175px;
+    left: 13%;
 }
 .logout {
     display: flex;
     position: absolute;
-    right: 175px;
+    right: 13%;
 }
 .sticky {
     position: fixed;
     top: 0;
     width: 100%
   }
+
+.logoutBtn {
+  border: none;
+  background-color: #1A1E29;
+  color: white;
+  font-size: 15px;
+}

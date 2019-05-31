@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux';
+
 import Menu from './Menu';
-// import {connect} from 'react-redux';
-// import {withRouter} from 'react-router-dom';
+import App from '../App';
 import './Menu.css';
 
 
@@ -9,13 +11,18 @@ class BaseLayout extends Component {
 
 
     render() {
+
         return(
             <div>
-                <Menu />
-                {this.props.children}
+              {this.props.isAuth ? <Menu history={this.props.history} /> : null }
+              {this.props.children}
             </div>
         )
     }
 }
 
-export default BaseLayout;
+const mapStateToProps = state => ({
+  isAuth: state.isAuth,
+});
+
+export default connect(mapStateToProps)(withRouter(BaseLayout));
