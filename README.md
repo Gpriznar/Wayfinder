@@ -1,6 +1,6 @@
 # Wayfinder
 
-Wayfinder is a React/Redux project built for <a href="https://poetic.io/">Poetic Systems</a>. This application is designed to monitor the health of client websites by fetching pertinent information headlessly via Google Chrome's Lighthouse tool. 
+Wayfinder is a React/Redux project built for <a href="https://poetic.io/">Poetic Systems</a>. This application is designed to monitor the health of client websites by headlessly fetching pertinent information via Google Chrome's Lighthouse tool. 
 
 # Features 
 HTML, CSS, JavaScript, React.js, Redux.js, Node.js, Sequelize, Heroku, GraphQL, Apollo, PostgreSQL
